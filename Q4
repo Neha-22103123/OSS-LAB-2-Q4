@@ -1,0 +1,68 @@
+Project link: https://github.com/rast-7/Bi-Directional-Dijkstra
+Topic: Bi-directional Dijkstra's algorithm
+Documentation:
+1. Code analysis:
+
+Code Structure Analysis
+Header and Namespace:
+
+Header: #include <bits/stdc++.h> includes all standard C++ libraries. This is typical in competitive programming but not recommended for general use due to its inefficiency.
+Namespace: using namespace std; avoids prefixing standard library names with std::, simplifying code.
+Type Definitions and Constants:
+
+Type Definitions:
+typedef pair<int,int> ii; defines a type ii for pairs of integers, typically used to represent edges in the graph.
+typedef vector<int> vi; defines vi as a vector of integers.
+typedef vector< ii > vii; defines vii as a vector of ii, used for adjacency lists.
+Constants:
+#define INF 1e9 defines INF as a large number representing infinity, used for initializing distances.
+Global Variables:
+
+Graph Representation:
+int V, E, res(INT_MAX); stores the number of vertices (V), edges (E), and result (res), initialized to infinity.
+vector< vii > g; holds the adjacency list for the forward graph.
+vector< vii > gr; holds the adjacency list for the reverse graph.
+Distance Vectors:
+vi df; stores shortest path distances from the source in the forward graph.
+vi db; stores shortest path distances from the destination in the backward graph.
+dijkstra(int s, int t) Function:
+
+Initialization:
+Sets the distance from the source s in df to 0 and from the destination t in db to 0.
+Initializes a set p to track processed nodes.
+Priority Queues:
+Uses two priority queues: pqf for forward Dijkstra and pqb for backward Dijkstra.
+Main Loop:
+Alternates between processing nodes in the forward graph and the backward graph.
+Updates shortest path distances and checks if the current distance is the minimum found.
+Terminates when all nodes are processed or if the queues are empty.
+main() Function:
+
+Input Handling:
+Reads the number of vertices V, edges E, and edge data to build the adjacency lists for both forward and reversed graphs.
+Query Processing:
+For each query, initializes distance vectors to infinity, calls dijkstra to compute shortest paths, and prints the result.
+Reset:
+Resets distance vectors df and db for each new query.
+
+
+2.Overview of the functions in the code and their functionality:
+
+dijkstra(int s, int t):
+Purpose: Computes the shortest path between a source node s and a destination node t in a weighted graph using a bidirectional approach.
+Working:
+Initializes distances from s and t to all nodes as infinity, except the start nodes which are set to 0.
+Uses two priority queues to perform Dijkstra's algorithm on both the forward graph and the reversed graph (for backward search).
+Continuously processes nodes with the smallest known distance, updates distances in both graphs, and checks if the shortest path distance can be improved.
+Updates the result with the minimum distance found and breaks out of the loop if the nodes are already processed or if either queue is empty.
+
+main():
+Purpose: Handles the overall workflow including reading input, processing queries, and outputting results.
+Working:
+Reads the number of vertices and edges, and then constructs the adjacency lists for both the forward and reversed graphs.
+For each query, initializes distance vectors, invokes the dijkstra function to compute shortest paths, and prints the shortest path result.
+Resets the distance vectors for the next query.
+These functions together implement a solution to find the shortest path in a graph for multiple queries efficiently using a combination of Dijkstra's algorithm and bidirectional search.
+
+
+
